@@ -15,12 +15,21 @@ class Snake:
 
     def create_snake(self):
         for position in SNAKE_TURTLES_STARTING_POSITIONS:
-            tim = Turtle("square")
-            tim.speed("fastest")
-            tim.color("white")
-            tim.penup()
-            tim.goto(position)
-            self.snake_turtles.append(tim)
+            self.add_segment(position)
+
+    def add_segment(self, position):
+        """Add a new segment to the snake, position is where to place the new segment"""
+        tim = Turtle("square")
+        tim.speed("fastest")
+        tim.color("white")
+        tim.penup()
+        tim.goto(position)
+        self.snake_turtles.append(tim)
+
+    def extend(self):
+        """extends the snake by adding a new segment at the current last segments position"""
+        # we can put it at the last segments position because the movement function will make sure the snake "extends"
+        self.add_segment(self.snake_turtles[-1].position())
 
     def move(self):
         # This loop makes the "tail"(all snake turtles except the last) follow the "head"(the last snake turtle)

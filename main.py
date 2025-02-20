@@ -1,8 +1,10 @@
 from turtle import Screen, Turtle
 from snake import Snake
+from food import Food
+from scoreboard import Scoreboard
 import time
 
-GAME_SPEED = 0.05
+GAME_SPEED = 0.1
 
 screen = Screen()
 screen.setup(width=600, height=600)
@@ -19,6 +21,12 @@ screen.onkeypress(snake.down,"Down")
 screen.onkeypress(snake.left,"Left")
 screen.onkeypress(snake.right,"Right")
 
+# Create a piece of food for the snake to try to eat
+food = Food()
+
+scoreboard = Scoreboard()
+scoreboard.write_score()
+
 game_running = True
 while game_running:
     # Delays the next render and code processing by 1 second
@@ -26,6 +34,17 @@ while game_running:
     time.sleep(GAME_SPEED)
     snake.move()
 
+    # Detect collision with food
+    if snake.snake_head.distance(food) < 1:
+        food.move()
+        snake.extend()
+        scoreboard.increase_score()
+
+    # Detect collision with wall
+    if(snake.snake_head.xcor() > 280 or snake.snake_head.xcor() < -280 or
+            snake.snake_head.ycor() > 280 or snake.snake_head.ycor() < -280):
+        game_running = False
+        scoreboard.game_over()
 
 
 
