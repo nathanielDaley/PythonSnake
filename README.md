@@ -1,6 +1,6 @@
 # Classic Snake Game  
 
-A classic Snake game—eat pellets to grow longer and try to achieve the highest score!  
+A classic Snake game—eat pellets to grow longer and try to achieve a high score!  
 
 ## Controls  
 - **W**: Move up  
