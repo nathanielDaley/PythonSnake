@@ -4,6 +4,7 @@ from food import Food
 from scoreboard import Scoreboard
 import time
 
+# how ofter the screen renders in seconds - higher is slower
 GAME_SPEED = 0.1
 
 screen = Screen()

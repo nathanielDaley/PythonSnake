@@ -14,6 +14,7 @@ class Snake:
         self.snake_head = self.snake_turtles[0]
 
     def create_snake(self):
+        """makes a snake in the middle of the screen with three segments"""
         for position in SNAKE_TURTLES_STARTING_POSITIONS:
             self.add_segment(position)
 
@@ -32,8 +33,8 @@ class Snake:
         self.add_segment(self.snake_turtles[-1].position())
 
     def move(self):
-        # This loop makes the "tail"(all snake turtles except the last) follow the "head"(the last snake turtle)
-        # range("start index", "last index", "step  distance") !note last index is not inclusive
+        """ This loop makes the "tail"(all snake turtles except the last) follow the "head"(the last snake turtle)
+        # range("start index", "last index", "step  distance") !note last index is not inclusive """
         for snake_num in range(len(self.snake_turtles) - 1, 0, -1):
             next_snake = self.snake_turtles[snake_num - 1]
             new_x_coordinate = next_snake.xcor()
@@ -45,17 +46,21 @@ class Snake:
         self.snake_head.forward(MOVE_DISTANCE)
 
     def up(self):
+        """sets the direction of the snake to move upwards"""
         if self.snake_head.heading() != DOWN:
             self.snake_head.setheading(UP)
 
     def down(self):
+        """sets the direction of the snake to move downwards"""
         if self.snake_head.heading() != UP:
             self.snake_head.setheading(DOWN)
 
     def left(self):
+        """sets the direction of the snake to move leftwards"""
         if self.snake_head.heading() != RIGHT:
             self.snake_head.setheading(LEFT)
 
+        """sets the direction of the snake to move rightwards"""
     def right(self):
         if self.snake_head.heading() != LEFT:
             self.snake_head.setheading(RIGHT)

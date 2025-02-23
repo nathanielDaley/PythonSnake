@@ -12,6 +12,7 @@ class Food(Turtle):
         self.move()
 
     def move(self):
+        """move the piece of food to a random place on screen"""
         random_x = random.randint(-14, 14)
         random_y = random.randint(-14, 14)
         self.goto(random_x * 20, random_y * 20)
